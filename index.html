@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lizzy's Kitchen | Hot, home-style meals, delivered</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange: #E8742A;
+      --green: #1F5E3B;
+      --cream: #FFF4E2;
+      --text: #2B2118;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    .container { width: 90%; max-width: 1100px; margin: 0 auto; }
+
+    /* Menu bar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--green);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--orange); }
+
+    .logo { display: flex; align-items: center; gap: 10px; }
+
+    .logo img { width: 44px; height: 44px; }
+
+    .nav .btn { white-space: nowrap; }
+
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--white);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(232, 116, 42, 0.35);
+      transition: transform 0.2s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    /* Home */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .hero h1 {
+      font-size: 3.4rem;
+      line-height: 1.1;
+      color: var(--green);
+      margin-bottom: 20px;
+    }
+
+    .hero p { font-size: 1.2rem; margin-bottom: 32px; }
+
+    .hero img {
+      border-radius: 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    /* Sections */
+    section { padding: 80px 0; }
+
+    h2 {
+      font-size: 2.4rem;
+      color: var(--green);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .subtitle { text-align: center; margin-bottom: 48px; }
+
+    /* Menu */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .dish {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .dish img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+
+    .dish-info { padding: 20px; }
+
+    .dish h3 { color: var(--green); font-size: 1.15rem; }
+
+    .dish p { font-size: 0.95rem; margin: 6px 0 12px; }
+
+    .price { color: var(--orange); font-weight: 800; font-size: 1.3rem; }
+
+    /* About */
+    .about {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .about .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .about h2 { color: var(--white); text-align: left; }
+
+    .about p { font-size: 1.15rem; }
+
+    .about img { border-radius: 24px; aspect-ratio: 4 / 3; object-fit: cover; }
+
+    /* Contact */
+    .contact { text-align: center; }
+
+    .contact-cards {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 32px 0 40px;
+      flex-wrap: wrap;
+    }
+
+    .contact-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 24px 32px;
+      min-width: 240px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-card strong { display: block; color: var(--green); font-size: 1.1rem; }
+
+    /* Reviews */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .review {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .stars { color: var(--orange); font-size: 1.3rem; letter-spacing: 2px; }
+
+    .review p { margin: 10px 0 14px; font-size: 1.05rem; }
+
+    .review strong { color: var(--green); }
+
+    /* Order form */
+    .order-form {
+      max-width: 560px;
+      margin: 0 auto 40px;
+      background: var(--white);
+      border-radius: 24px;
+      padding: 32px;
+      text-align: left;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      display: grid;
+      gap: 16px;
+    }
+
+    .order-form label { font-weight: 600; color: var(--green); display: grid; gap: 6px; }
+
+    .order-form label { min-width: 0; }
+
+    .order-form input, .order-form select {
+      width: 100%;
+      min-width: 0;
+      font: inherit;
+      padding: 14px 16px;
+      border: 2px solid #E8DCC8;
+      border-radius: 14px;
+      background: var(--cream);
+    }
+
+    .order-form button { border: none; cursor: pointer; font: inherit; font-weight: 700; }
+
+    footer {
+      background: var(--text);
+      color: var(--cream);
+      text-align: center;
+      padding: 24px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Phones */
+    @media (max-width: 800px) {
+      .nav-links { display: none; }
+      .nav .btn { padding: 10px 20px; font-size: 0.9rem; }
+      .hide-sm { display: none; }
+      .logo { font-size: 1.2rem; }
+      .logo img { width: 36px; height: 36px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .order-form { padding: 22px; }
+      .hero, .about .container { grid-template-columns: 1fr; }
+      .hero { padding: 48px 0; text-align: center; }
+      .hero h1 { font-size: 2.4rem; }
+      .menu-grid { grid-template-columns: 1fr 1fr; }
+      .about h2 { text-align: center; }
+      .about p { text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .menu-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#home" class="logo"><img src="img/logo.png" alt="Lizzy's Kitchen logo">Lizzy's <span>Kitchen</span></a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="https://wa.me/15551234567?text=Hi%20Lizzy%2C%20I%27d%20like%20to%20order" class="btn">Order<span class="hide-sm"> on WhatsApp</span></a>
+    </div>
+  </header>
+
+  <!-- Home -->
+  <div class="container hero" id="home">
+    <div>
+      <h1>Hot, home-style meals, delivered.</h1>
+      <p>Fresh food cooked every morning. Jollof, pasta, burgers and noodles.</p>
+      <a href="https://wa.me/15551234567?text=Hi%20Lizzy%2C%20I%27d%20like%20to%20order" class="btn">Order on WhatsApp</a>
+    </div>
+    <img src="img/lizzy.png" alt="Lizzy cooking in her kitchen">
+  </div>
+
+  <!-- Menu -->
+  <section id="menu">
+    <div class="container">
+      <h2>Our Menu</h2>
+      <p class="subtitle">Cooked fresh every morning, delivered hot.</p>
+      <div class="menu-grid">
+        <div class="dish">
+          <img src="img/jollof.png" alt="Jollof rice and chicken">
+          <div class="dish-info">
+            <h3>Jollof Rice &amp; Chicken</h3>
+            <p>Smoky tomato rice with juicy grilled chicken.</p>
+            <span class="price">$8</span>
+          </div>
+        </div>
+        <div class="dish">
+          <img src="img/pasta.png" alt="Creamy pasta">
+          <div class="dish-info">
+            <h3>Creamy Pasta</h3>
+            <p>Rich, creamy sauce with tender chicken and herbs.</p>
+            <span class="price">$9</span>
+          </div>
+        </div>
+        <div class="dish">
+          <img src="img/burger.png" alt="Burger and fries">
+          <div class="dish-info">
+            <h3>Burger &amp; Fries</h3>
+            <p>A thick, cheesy burger with golden, crispy fries.</p>
+            <span class="price">$10</span>
+          </div>
+        </div>
+        <div class="dish">
+          <img src="img/noodles.png" alt="Fried noodles with chicken">
+          <div class="dish-info">
+            <h3>Fried Noodles with Chicken</h3>
+            <p>Wok-fried noodles, fresh veggies and chicken.</p>
+            <span class="price">$8</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews">
+    <div class="container">
+      <h2>What Customers Say</h2>
+      <p class="subtitle">Real words from people who eat with us.</p>
+      <div class="reviews-grid">
+        <div class="review"><div class="stars">★★★★★</div><p>"The jollof is just like home. Hot, fast, and the chicken is so juicy."</p><strong>Ama, office worker</strong></div>
+        <div class="review"><div class="stars">★★★★★</div><p>"I order the creamy pasta every Friday. Always on time."</p><strong>Daniel, student</strong></div>
+        <div class="review"><div class="stars">★★★★★</div><p>"Big portions, fair prices, and Lizzy always replies quickly."</p><strong>Grace, nurse</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="container">
+      <div>
+        <h2>About Lizzy</h2>
+        <p>Lizzy's Kitchen started in one small kitchen, with one big idea: cook for people the way you'd cook for family. Today Lizzy feeds office workers and students every day, with fresh, home-style recipes.</p>
+      </div>
+      <img src="img/shopfront.png" alt="Lizzy's Kitchen shop front">
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>Hungry? Order Now</h2>
+      <div class="contact-cards">
+        <div class="contact-card"><strong>Opening hours</strong>Monday – Saturday, 8am – 6pm</div>
+        <div class="contact-card"><strong>Delivery</strong>Hot at your door in 40 minutes</div>
+      </div>
+      <form class="order-form" id="orderForm">
+        <label>Your name<input type="text" id="name" placeholder="e.g. Ama" required></label>
+        <label>What would you like?
+          <select id="dish">
+            <option>Jollof Rice &amp; Chicken - $8</option>
+            <option>Creamy Pasta - $9</option>
+            <option>Burger &amp; Fries - $10</option>
+            <option>Fried Noodles with Chicken - $8</option>
+          </select>
+        </label>
+        <label>Delivery address<input type="text" id="address" placeholder="Street, area, landmark" required></label>
+        <button type="submit" class="btn">Send order on WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Lizzy's Kitchen. Made with love.</p>
+  </footer>
+
+  <script>
+    document.getElementById("orderForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var name = document.getElementById("name").value;
+      var dish = document.getElementById("dish").value;
+      var address = document.getElementById("address").value;
+      var message = "Hi Lizzy, I'm " + name + ". I'd like to order: " + dish + ". Deliver to: " + address + ".";
+      window.open("https://wa.me/15551234567?text=" + encodeURIComponent(message), "_blank");
+    });
+  </script>
+</body>
+</html>
